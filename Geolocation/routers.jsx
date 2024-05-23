@@ -1,11 +1,26 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import App from './App'; // Importe o componente App
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
 
-export default function Main() {
-  return (
-    <NavigationContainer>
-      <App />
-    </NavigationContainer>
-  );
+import Mapa from "./pages/mapa/map";
+import Temperatura from "./pages/temperatura/temperatura";
+
+const Pilha = createStackNavigator(); // Defina Pilha como createStackNavigator()
+
+export default function Routers() {
+    return (
+        <NavigationContainer>
+            <Pilha.Navigator>
+                <Pilha.Screen
+                    name="Mapa"
+                    component={Mapa}
+                    options={{ headerShown: false }}
+                />
+                <Pilha.Screen
+                    name="Temperatura"
+                    component={Temperatura}
+                    options={{ headerShown: false }}
+                />
+            </Pilha.Navigator>
+        </NavigationContainer>
+    );
 }
